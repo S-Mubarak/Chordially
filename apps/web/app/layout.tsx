@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Chordially Artist Onboarding",
-  description: "Artist onboarding and public profile preview."
+  title: "Chordially Session Control",
+  description: "Artist session lifecycle and dashboard."
 };
 
 export default function RootLayout({

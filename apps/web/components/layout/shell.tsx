@@ -14,7 +14,7 @@ export function Shell({
       <section className="hero">
         <p className="eyebrow">Chordially</p>
         <h1>{title}</h1>
-        <p className="hero-copy">{subtitle}</p>
+        <p className="copy">{subtitle}</p>
       </section>
       {children}
     </main>
