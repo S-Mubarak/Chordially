@@ -1,51 +1,37 @@
 import { notFound } from "next/navigation";
 import { Shell } from "../../../components/layout/shell";
 import { Card } from "../../../components/ui/card";
-import { getArtistBySlug } from "../../../lib/artist";
+import { listDiscoverySessions } from "../../../lib/discovery";
 
-export default function ArtistProfilePage({
-  params,
-  searchParams
+export default function ArtistDetailPage({
+  params
 }: {
   params: { slug: string };
-  searchParams: { onboarded?: string };
 }) {
-  const artist = getArtistBySlug(params.slug);
+  const session = listDiscoverySessions({ status: "live", limit: 100 }).items
+    .concat(listDiscoverySessions({ status: "upcoming", limit: 100 }).items)
+    .find((item) => item.slug === params.slug);
 
-  if (!artist) {
+  if (!session) {
     notFound();
   }
 
   return (
     <Shell
-      title={artist.stageName}
-      subtitle="Public artist profile route for sharing identity, genre, city, and wallet readiness."
+      title={session.artistName}
+      subtitle="A lightweight destination page that discovery cards can safely link to today."
     >
-      <div className="grid" style={{ gridTemplateColumns: "1.1fr 0.9fr" }}>
-        <Card title="Artist story">
-          <div className="meta" style={{ marginBottom: 16 }}>
-            <span className="meta-chip">{artist.city}</span>
-            {artist.genres.split(",").map((genre) => (
-              <span className="meta-chip" key={genre.trim()}>
-                {genre.trim()}
-              </span>
-            ))}
-          </div>
-          <p className="muted">{artist.bio}</p>
-          <p className="muted">Wallet: {artist.wallet}</p>
-          {searchParams.onboarded === "1" ? (
-            <p className="muted">Artist onboarding details were saved successfully.</p>
-          ) : null}
-        </Card>
-        <Card title="Profile link">
-          <p className="muted">
-            This slug-based page is ready to become the shareable public artist destination in later branches.
-          </p>
-          <a className="button button--secondary" href="/artist/onboarding">
-            Edit artist profile
-          </a>
-        </Card>
-      </div>
+      <Card title={session.title}>
+        <div>
+          <span className="chip">{session.city}</span>
+          {session.genres.map((genre) => (
+            <span className="chip" key={genre}>{genre}</span>
+          ))}
+        </div>
+        <p className="muted">
+          {session.isLive ? "This artist is live now." : "This artist has an upcoming set."}
+        </p>
+      </Card>
     </Shell>
   );
 }

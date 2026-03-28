@@ -1,27 +1,22 @@
 import { Shell } from "../components/layout/shell";
 import { Card } from "../components/ui/card";
-import { getSessionDraft } from "../lib/session-store";
+import { listDiscoverySessions } from "../lib/discovery";
 
 export default function HomePage() {
-  const session = getSessionDraft();
+  const live = listDiscoverySessions({ status: "live" });
 
   return (
     <Shell
-      title="A local artist session lifecycle that can ship before the backend."
-      subtitle="This branch adds create, start, and end controls plus a lightweight dashboard for live session state."
+      title="Discovery built against a stable local contract."
+      subtitle="This branch adds the discovery data shape and a fan-facing feed so UI work can merge before the real backend endpoint exists."
     >
-      <div className="grid" style={{ gridTemplateColumns: "1fr 1fr" }}>
-        <Card title="Current state">
-          <p className="muted">Session: {session.title}</p>
-          <p className="muted">Status: {session.status}</p>
-          <a className="button" href="/artist/dashboard">Open dashboard</a>
-        </Card>
-        <Card title="Why this branch">
-          <p className="muted">
-            The lifecycle is cookie-backed so the UI can be reviewed and merged independently of API session endpoints.
-          </p>
-        </Card>
+      <div className="nav">
+        <a className="button" href="/discover">Browse live sessions</a>
+        <a className="button button--secondary" href="/discover?status=upcoming">Browse upcoming sessions</a>
       </div>
+      <Card title="Current availability">
+        <p className="muted">{live.total} live sessions are available in the demo feed right now.</p>
+      </Card>
     </Shell>
   );
 }

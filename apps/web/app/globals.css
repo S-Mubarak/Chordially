@@ -1,15 +1,15 @@
 :root {
-  --bg: #111015;
-  --ink: #f5f1ea;
-  --muted: #bbb2a3;
-  --line: rgba(200, 191, 180, 0.18);
-  --panel: rgba(22, 19, 26, 0.9);
-  --accent: #ff8a3d;
-  --accent-soft: rgba(255, 138, 61, 0.16);
+  --bg: #f2efe7;
+  --ink: #1b1813;
+  --muted: #635a4d;
+  --line: rgba(94, 83, 69, 0.2);
+  --panel: rgba(255, 252, 247, 0.9);
+  --accent: #2a8f7b;
+  --accent-soft: rgba(42, 143, 123, 0.12);
 }
 
 * { box-sizing: border-box; }
-html { background: linear-gradient(180deg, #111015 0%, #09080b 100%); }
+html { background: linear-gradient(180deg, #f5f1ea 0%, #efe7d8 100%); }
 body { margin: 0; color: var(--ink); font-family: "Segoe UI", sans-serif; }
 .shell { width: min(1080px, calc(100% - 32px)); margin: 0 auto; padding: 40px 0 72px; }
 .hero, .card { background: var(--panel); border: 1px solid var(--line); border-radius: 28px; padding: 28px; }
@@ -18,9 +18,7 @@ body { margin: 0; color: var(--ink); font-family: "Segoe UI", sans-serif; }
 h1 { margin: 0 0 18px; font-size: clamp(2.4rem, 5vw, 4.8rem); line-height: .96; max-width: 12ch; }
 .copy, .muted { color: var(--muted); line-height: 1.7; }
 .grid { display: grid; gap: 18px; }
-.stack { display: grid; gap: 12px; }
-.input, .textarea { width: 100%; border-radius: 16px; border: 1px solid var(--line); background: rgba(255,255,255,.03); color: var(--ink); padding: 14px 16px; font: inherit; }
-.textarea { min-height: 110px; resize: vertical; }
-.button { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 18px; border-radius: 999px; border: 1px solid transparent; background: linear-gradient(135deg, var(--accent) 0%, #c85b1a 100%); color: #fff8f1; font-weight: 700; }
-.button--secondary { background: var(--accent-soft); border-color: var(--line); }
 .chip { display: inline-flex; align-items: center; min-height: 30px; padding: 0 12px; border-radius: 999px; background: var(--accent-soft); margin-right: 10px; margin-bottom: 10px; }
+.nav { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
+.button { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 18px; border-radius: 999px; border: 1px solid transparent; background: linear-gradient(135deg, var(--accent) 0%, #1f6e5e 100%); color: white; font-weight: 700; }
+.button--secondary { background: var(--accent-soft); color: var(--ink); border-color: var(--line); }
