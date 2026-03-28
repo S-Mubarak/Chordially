@@ -196,4 +196,10 @@ model AuditLog {
   @@index([entityType, entityId])
   @@index([actorUserId, createdAt])
   @@index([action, createdAt])
+model User {
+  id        String   @id @default(cuid())
+  publicKey String   @unique
+  username  String?
+  bio       String?
+  createdAt DateTime @default(now())
 }

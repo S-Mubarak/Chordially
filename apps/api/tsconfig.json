@@ -10,4 +10,11 @@
     "types": ["node"]
   },
   "include": ["prisma/**/*.ts"]
+  "extends": "../../packages/config/tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "types": ["node"]
+  },
+  "include": ["src"]
 }
