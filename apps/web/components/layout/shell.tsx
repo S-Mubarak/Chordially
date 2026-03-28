@@ -11,11 +11,11 @@ export function Shell({
 }) {
   return (
     <main className="shell">
-      <section className="hero">
+      <header className="hero">
         <p className="eyebrow">Chordially</p>
         <h1>{title}</h1>
-        <p className="copy">{subtitle}</p>
-      </section>
+        <p className="hero__copy">{subtitle}</p>
+      </header>
       {children}
     </main>
   );
