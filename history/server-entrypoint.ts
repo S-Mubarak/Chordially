@@ -12,7 +12,7 @@
 import http from "http";
 import { env } from "./apps/api/src/config/env.js";
 import { createApp } from "./apps/api/src/app.js";
-import { initSocketServer } from "./issue-70-socket-server.js";
+import { initSocketServer } from "./socket-server.js";
 
 const app = createApp();
 const httpServer = http.createServer(app);

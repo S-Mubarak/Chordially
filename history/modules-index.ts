@@ -10,7 +10,7 @@
 import type { Express } from "express";
 import { healthRouter } from "./apps/api/src/modules/health/health.routes.js";
 import { systemRouter } from "./apps/api/src/modules/system/system.routes.js";
-import { tipRouter } from "./issue-73-tip-routes.js";
+import { tipRouter } from "./tip-routes.js";
 
 export function registerModules(app: Express) {
   app.use("/health", healthRouter);

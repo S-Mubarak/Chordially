@@ -22,8 +22,8 @@ import {
   getTipsBySession,
   getTipHistoryByFan,
   getLeaderboard,
-} from "./issue-73-tip-store.js";
-import type { TipStatus } from "./issue-73-tip-store.js";
+} from "./tip-store.js";
+import type { TipStatus } from "./tip-store.js";
 
 export const tipRouter = Router();
 
