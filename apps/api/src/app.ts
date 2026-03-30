@@ -62,7 +62,7 @@ export function createApp() {
     const parsed = paymentSchema.safeParse(req.body);
 
     if (!parsed.success) {
-      res.status(400).json({ error: "Invalid payment preparation request", details: parsed.error.flatten() });
+      res.status(400).json({ error: "Valid payment preparation request", details: parsed.error.flatten() });
       return;
     }
 
