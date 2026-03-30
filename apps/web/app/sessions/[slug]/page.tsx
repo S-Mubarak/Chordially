@@ -1,10 +1,9 @@
 import { notFound } from "next/navigation";
 import { Shell } from "../../../components/layout/shell";
 import { Card } from "../../../components/ui/card";
-import { Input } from "../../../components/ui/input";
 import { getSessionDetail } from "../../../lib/session-detail";
 import { getTipIntent } from "../../../lib/tip-intent";
-import { createTipIntent } from "./actions";
+import { TipForm } from "./tip-form";
 
 const isDemoMode = process.env.DEMO_MODE === "true";
 
@@ -72,6 +71,13 @@ export default function SessionDetailPage({
               {isDemoMode ? " This is a demo record — no real transaction was submitted." : " Payment execution is intentionally deferred."}
             </p>
           ) : null}
+          <TipForm
+            artistSlug={session.slug}
+            defaultAsset={session.walletAsset}
+            showConfirmation={searchParams.intent === "1"}
+            confirmedAmount={showIntent?.amount}
+            confirmedAsset={showIntent?.asset}
+          />
         </Card>
       </div>
     </Shell>
